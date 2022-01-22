@@ -1,0 +1,28 @@
+// Import your components CSS files here.
+@import "alert";
+@import "avatar";
+@import "navbar";
+
+/* Container holding the image and the text */
+.container2 {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+}
+
+.left {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color:white
+}
