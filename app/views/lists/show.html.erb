@@ -1,3 +1,33 @@
 <h2>Hey this is one of the lists</h2>
+<div class="container2">
+  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+  <div class="centered"><%= @list.name %></div>
+</div>
+<div class=""><%= link_to "Remove", list_path(@list),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: 'ml-3 text-danger'
+            %></div>
 
-<%= @list.name %>
+
+
+<h3>Here are all the Movies</h3>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Lists</h3>
+  </div>
+  <div class="row">
+    <% @movies.each do |movie| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+        <%= link_to list_path(movie), class:'text-decoration-none' do %>
+          <div class="card-category"style="height: 200px; width:300px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : asset_path('list_background.jpg') %>)">
+            <%= movie.title %>
+            <%= movie.overview %>
+            <%= movie.poster_url %>
+            <%= movie.rating %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

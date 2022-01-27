@@ -3,22 +3,21 @@
   <div class="centered">Save all movies you want</div>
 </div>
 
-<section id="lists" class="mt-5">
-  <div class="container mb-5">
-      <div class="row">
-        <div class="col-sm">
-          <% @lists.each do |list|  %>
-          <%= image_tag "comedy.jpeg", alt: "comedy", width: 200, height: 200%>
-          <div class="left"><%= link_to "Comedy", list_path(list) %></div>
-          <% end  %>
-        </div>
-        <div class="col-sm">
-          Ons
-        </div>
-        <div class="col-sm">
-          One of three columns
-        </div>
-      </div>
-    </div>
+
+
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Lists</h3>
   </div>
-</section>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+        <%= link_to list_path(list), class:'text-decoration-none' do %>
+          <div class="card-category"style="height: 200px; width:300px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : asset_path('list_background.jpg') %>)">
+            <%= list.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
